@@ -3,29 +3,82 @@
 
 Ball::Ball()
 {
-    x = 100.0f;
-    y = 100.0f;
+    x = 540.0f; // centre
+    y = 400.0f; // centre
     speedX = 5.0f;
     speedY = 10.0f;
     radius = 15.0f;
+    hitPaddle = true;
+    countdown = 3;
+    moving = false;
+    elapsedTime = 0.0f;
+    hitFloor= false;
 }
 
-void Ball::Update(Paddle& paddle) // Pass the paddle as a reference
+void Ball::Update(Paddle& paddle, Tiles& tiles, int& score) // Pass the paddle as a reference
 {
-    x += speedX;
-    y += speedY;
-
-    // Check collision with paddle
-    if (CheckCollisionCircleRec({x, y}, radius, {(float)paddle.x,(float)paddle.y,(float)paddle.width,(float)paddle.height }))
+    if(countdown > 0)
     {
-        speedY = -speedY; // Reverse the ball's vertical direction
+        elapsedTime += GetFrameTime();
+        if(elapsedTime >= 1.0f)
+        {
+            countdown--;
+            elapsedTime = 0.0f;
+            if(countdown == 0)
+                moving = true;
+        }
+        return;
     }
 
-    if (x + radius >= GetScreenWidth() || x - radius <= 0)
-        speedX *= -1.0f;
+    if(moving)
+    {
+        x += speedX;
+        y += speedY;
 
-    if (y + radius >= GetScreenHeight() || y - radius <= 0)
-        speedY *= -1.0f;
+        // Check collision with paddle
+        if (CheckCollisionCircleRec({x, y}, radius, {(float)paddle.x,(float)paddle.y,(float)paddle.width,(float)paddle.height }))
+        {
+            speedY = -speedY; // Reverse the ball's vertical direction
+            speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
+            hitPaddle = true;
+        }
+
+        // Check collision with tiles
+        if (hitPaddle) {
+            for(Tile& tile : tiles.GetTiles())
+            {
+                if(!tile.destroyed && CheckCollisionCircleRec({x, y}, radius, tile.rect))
+                {
+                    tile.destroyed = true;
+                    score += tile.points;
+                    speedY = -speedY; // Reverse the ball's vertical direction'            speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
+                    speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
+                    hitPaddle = false;
+                    break;
+                }
+            }
+        }
+
+        // Check collision with floor
+        if (y + radius >= GetScreenHeight())
+        {
+            hitFloor = true;
+            moving = false;
+        }
+
+        if (x + radius >= GetScreenWidth() || x - radius <= 0)
+            speedX *= -1.0f;
+
+        if (y + radius >= GetScreenHeight() || y - radius <= 0)
+            speedY *= -1.0f;
+    }
+}
+
+bool Ball::FloorHit()
+{
+    if(hitFloor)
+        return true;
+    return false;
 }
 
 void Ball::Draw()

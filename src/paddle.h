@@ -13,4 +13,8 @@ public:
     int speedY;
     int width;
     int height;
+
+private:
+    float leftArrowPressTime;
+    float rightArrowPressTime;
 };
