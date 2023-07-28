@@ -1,2 +1,2 @@
-# BreakoutBoom
+# Breakout: Boom
 variant of breakout
