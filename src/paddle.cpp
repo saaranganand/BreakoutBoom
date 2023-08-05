@@ -13,6 +13,18 @@ Paddle::Paddle() // spawn the paddle to the bottom center of the screen
     rightArrowPressTime = 0.0f;
 }
 
+void Paddle::Reset()
+{
+    x = GetScreenWidth() / 2;
+    y = GetScreenHeight() - 50;
+    speedX = 10;
+    speedY = 10;
+    width = 80;
+    height = 20;
+    leftArrowPressTime = 0.0f;
+    rightArrowPressTime = 0.0f;
+}
+
 void Paddle::Move()
 {
     if(IsKeyDown(KEY_LEFT) && x > 0)

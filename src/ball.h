@@ -6,6 +6,7 @@ class Ball
 {
 public:
     Ball();
+    void Reset();
     void Update(Paddle& paddle, Tiles& tiles, int& score); // Add the paddle as a parameter
     void Draw();
     bool FloorHit();

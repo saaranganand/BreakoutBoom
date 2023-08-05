@@ -4,6 +4,7 @@ class Paddle
 {
 public:
     Paddle();
+    void Reset();
     void Move();
     void Draw();
 

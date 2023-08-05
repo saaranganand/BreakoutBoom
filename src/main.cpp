@@ -19,6 +19,15 @@ void ToggleFullscreenWindow(int windowWidth, int windowHeight)
     }
 }
 */
+
+void resetGame(Ball& ball, Paddle& paddle, Tiles& tiles, int& score)
+{
+    ball.Reset();
+    paddle.Reset();
+    tiles.GenerateTiles();
+    score = 0;
+}
+
 void GameEnd()
 {
     ClearBackground(BLACK);
@@ -44,6 +53,7 @@ int main()
     Tiles tiles = Tiles();
 
     int score = 0;
+    bool gameOver = false;
 
     InitWindow(screenWidth, screenHeight, "Breakout: Boom");
     SetTargetFPS(60);
@@ -61,7 +71,18 @@ int main()
         tiles.Draw();
         DrawScore(score);
         if(ball.FloorHit() == true)
+        {
+            gameOver = true;
+        }
+        if(gameOver == true)
+        {
             GameEnd();
+            if(IsKeyPressed(KEY_ENTER))
+            {
+                resetGame(ball, paddle, tiles, score);
+                gameOver = false;
+            }
+        }
         EndDrawing();
     }
 
