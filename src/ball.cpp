@@ -1,7 +1,22 @@
+// ball.cpp
 #include "ball.h"
 #include <raylib.h>
 
 Ball::Ball()
+{
+    x = 540.0f; // centre
+    y = 400.0f; // centre
+    speedX = 5.0f;
+    speedY = 10.0f;
+    radius = 15.0f;
+    hitPaddle = true;
+    countdown = 3;
+    moving = false;
+    elapsedTime = 0.0f;
+    hitFloor= false;
+}
+
+void Ball::Reset()
 {
     x = 540.0f; // centre
     y = 400.0f; // centre
@@ -45,16 +60,20 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score) // Pass the paddle a
 
         // Check collision with tiles
         if (hitPaddle) {
+            bool collisiondDetected = false;
             for(Tile& tile : tiles.GetTiles())
             {
                 if(!tile.destroyed && CheckCollisionCircleRec({x, y}, radius, tile.rect))
                 {
                     tile.destroyed = true;
                     score += tile.points;
-                    speedY = -speedY; // Reverse the ball's vertical direction'            speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
+                    if(!collisiondDetected)
+                    {
+                        speedY = -speedY; // Reverse the ball's vertical direction
+                        collisiondDetected = true;
+                    }
                     speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
                     hitPaddle = false;
-                    break;
                 }
             }
         }
