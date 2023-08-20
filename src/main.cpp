@@ -1,9 +1,9 @@
 #include <raylib.h>
-#include "ball.h"
-#include "paddle.h"
-#include "tiles.h"
+#include "ball.cpp"
+#include "paddle.cpp"
+#include "tiles.cpp"
 
-/*
+/* WIP - DYNAMIC FULLSCREEN SCALING
 void ToggleFullscreenWindow(int windowWidth, int windowHeight)
 {
     if(!IsWindowFullscreen())
@@ -31,7 +31,8 @@ void resetGame(Ball& ball, Paddle& paddle, Tiles& tiles, int& score)
 void GameEnd()
 {
     ClearBackground(BLACK);
-    DrawText("Game Over!", GetScreenWidth() / 2 - MeasureText("Game Over!", 40) / 2, GetScreenHeight() / 2 - 40, 40, WHITE);
+    DrawText("Game Over!", GetScreenWidth() / 2 - MeasureText("Game Over!", 40) / 2, GetScreenHeight() / 2 - 40, 40, RED);
+    DrawText("Press Enter To Restart.", GetScreenWidth()/2 - MeasureText("Press Enter To Restart.", 30)/2, GetScreenHeight()/2 - 0.9, 30, WHITE);
 }
 
 void DrawScore(int score)
