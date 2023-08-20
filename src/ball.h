@@ -22,4 +22,10 @@ private:
     bool moving;
     float elapsedTime;
     bool hitFloor;
+    bool sizeIncrease; // Tracks if the ball size increase power-up is active
+    float sizeIncreaseTimer; // Timer for the power-up effect
+    bool slowdown;          // Tracks if the ball slowdown power-up is active
+    float slowdownTimer;    // Timer for the power-up effect
+    float originalSpeedX;   // Store the original X speed for restoring
+    float originalSpeedY;   // Store the original Y speed for restoring
 };
