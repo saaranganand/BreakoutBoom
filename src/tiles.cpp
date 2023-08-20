@@ -25,21 +25,21 @@ void Tiles::GenerateTiles() {
 
             int randNum = rand() % 100 + 1;
 
-            if (randNum <= 60) {
+            if (randNum <= 60) { // 60% chance a tile could be regular
                 tile.type = REGULAR;
 
-                if (i == 0)
+                if (i == 0) // last row tile
                     tile.points = 40;
-                else if (i == 1)
+                else if (i == 1) // third row tile
                     tile.points = 30;
-                else if (i == 2)
+                else if (i == 2) // second row
                     tile.points = 20;
-                else
+                else // first row tile
                     tile.points = 10;
-            } else if (randNum > 60 && randNum <= 80) {
+            } else if (randNum > 60 && randNum <= 90) { // 30% chance a tile could be a bomb
                 tile.type = BOMB;
-                tile.points = 0;
-            } else {
+                tile.points = (-10);
+            } else { // WIP - Powerup tile (10%): Ideas - slow down ball, increase ball size
                 tile.type = POWERUP;
                 tile.points = 0;
             }
