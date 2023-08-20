@@ -69,5 +69,5 @@ void Paddle::Move()
 
 void Paddle::Draw()
 {
-    DrawRectangle(x, y, width, height, WHITE);
+    DrawRectangle(x, y, width, height, BLUE);
 }
