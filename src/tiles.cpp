@@ -12,7 +12,8 @@ Tiles::Tiles() {
     GenerateTiles();
 }
 
-void Tiles::GenerateTiles() {
+void Tiles::GenerateTiles() 
+{
     srand(time(NULL));
 
     for (int i = 0; i < rows; i++) {
@@ -25,7 +26,8 @@ void Tiles::GenerateTiles() {
 
             int randNum = rand() % 100 + 1;
 
-            if (randNum <= 60) { // 60% chance a tile could be regular
+            if (randNum <= 60) 
+            { // 60% chance a tile could be regular
                 tile.type = REGULAR;
 
                 if (i == 0) // last row tile
@@ -36,10 +38,14 @@ void Tiles::GenerateTiles() {
                     tile.points = 20;
                 else // first row tile
                     tile.points = 10;
-            } else if (randNum > 60 && randNum <= 90) { // 30% chance a tile could be a bomb
+            } 
+            else if (randNum > 60 && randNum <= 90) 
+            { // 30% chance a tile could be a bomb
                 tile.type = BOMB;
                 tile.points = (-10);
-            } else { // WIP - Powerup tile (10%): Ideas - slow down ball, increase ball size
+            } 
+            else 
+            { // WIP - Powerup tile (10%): Ideas - slow down ball, increase ball size
                 tile.type = POWERUP;
                 tile.points = 0;
             }
@@ -51,9 +57,12 @@ void Tiles::GenerateTiles() {
     }
 }
 
-void Tiles::Draw() {
-    for (Tile& tile : tiles) {
-        if (!tile.destroyed) {
+void Tiles::Draw() 
+{
+    for (Tile& tile : tiles) 
+    {
+        if (!tile.destroyed) 
+        {
             if (tile.type == REGULAR)
                 DrawRectangleRec(tile.rect, WHITE);
             else if (tile.type == BOMB)
