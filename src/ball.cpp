@@ -63,7 +63,7 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
     }
     if (speedY > 15.0f) {
         speedY = 15.0f;
-    }
+    }  
 
     if(moving)
     {
@@ -94,6 +94,8 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
 
                         if (tile.type == POWERUP) 
                         {
+                            // play sparkle sound effect and draw shiny stars aroud ball 
+
                             int powerUpType = GetRandomValue(1, 2);
                             if (powerUpType == 1) // Size increase
                             {
@@ -111,6 +113,10 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
                                 speedY *= 0.5f;
                             }
                             // Add more power-up types here
+                        }
+                        if (tile.type == BOMB)
+                        {
+                            // play boom sound effect and draw explosion
                         }
                     }
                     speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
@@ -164,5 +170,8 @@ bool Ball::FloorHit()
 
 void Ball::Draw()
 {
-    DrawCircle((int)x, (int)y, (int)radius, WHITE);
+    if (sizeIncrease || slowdown)
+        DrawCircle((int)x, (int)y, (int)radius, GREEN);
+    else
+        DrawCircle((int)x, (int)y, (int)radius, WHITE);
 }
