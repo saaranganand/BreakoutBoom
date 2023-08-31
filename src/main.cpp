@@ -35,14 +35,12 @@ void GameEnd() // ball hits floor
     DrawText("Press Enter To Restart.", GetScreenWidth()/2 - MeasureText("Press Enter To Restart.", 30)/2, GetScreenHeight()/2 - 0.9, 30, WHITE);
 }
 
-/*
 void Victory() // all tiles cleared
 {
     ClearBackground(BLACK);
     DrawText("All Tiles Cleared!", GetScreenWidth() / 2 - MeasureText("All Tiles Cleared!", 40) / 2, GetScreenHeight() / 2 - 40, 40, GREEN);
     DrawText("Press Enter To Restart.", GetScreenWidth()/2 - MeasureText("Press Enter To Restart.", 30)/2, GetScreenHeight()/2 - 0.9, 30, WHITE);
 }
-*/
 
 void DrawScore(int score)
 {
@@ -79,11 +77,7 @@ void StartGame()
         paddle.Draw();
         tiles.Draw();
         DrawScore(score);
-        if(ball.FloorHit() == true)
-        {
-            gameOver = true;
-        }
-        if(gameOver == true)
+        if(ball.FloorHit() == true) // game over
         {
             GameEnd();
             if(IsKeyPressed(KEY_ENTER))
@@ -92,7 +86,16 @@ void StartGame()
                 gameOver = false;
             }
         }
-
+        if(tiles.Cleared() == true) // victory
+        {
+            ball.Stop();
+            Victory();
+            if(IsKeyPressed(KEY_ENTER))
+            {
+                resetGame(ball, paddle, tiles, score);
+                gameOver = false;
+            }
+        }
         EndDrawing();
     }
 
