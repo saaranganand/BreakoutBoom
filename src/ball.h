@@ -1,3 +1,4 @@
+// ball.h
 #pragma once
 #include "paddle.h" // Include the paddle header file
 #include "tiles.h" // Include the tiles header file
@@ -10,6 +11,7 @@ public:
     void Update(Paddle& paddle, Tiles& tiles, int& score); // Add the paddle as a parameter
     void Draw();
     bool FloorHit();
+    void Stop();
 
 private:
     float x;
