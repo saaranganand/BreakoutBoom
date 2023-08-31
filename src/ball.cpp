@@ -133,10 +133,14 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
         }
 
         if (x + radius >= GetScreenWidth() || x - radius <= 0)
+        {
             speedX *= -1.0f;
+        }
 
         if (y + radius >= GetScreenHeight() || y - radius <= 0)
+        {
             speedY *= -1.0f;
+        }
     }
 
     if(sizeIncrease) // Size powerup timer
@@ -166,6 +170,12 @@ bool Ball::FloorHit()
     if(hitFloor)
         return true;
     return false;
+}
+
+void Ball::Stop()
+{
+    speedX = 0.0f;
+    speedY = 0.0f;
 }
 
 void Ball::Draw()
