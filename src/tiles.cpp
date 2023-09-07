@@ -73,6 +73,16 @@ void Tiles::Draw()
     }
 }
 
+bool Tiles::Cleared()
+{
+    for (Tile& tile : tiles) 
+    {
+        if (!tile.destroyed)
+            return false;
+    }
+    return true;
+}
+
 std::vector<Tile>& Tiles::GetTiles() {
     return tiles;
 }

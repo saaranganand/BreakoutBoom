@@ -23,6 +23,7 @@ class Tiles
         Tiles();
         void GenerateTiles();
         void Draw();
+        bool Cleared();
         std::vector<Tile>& GetTiles();
 
     private:
