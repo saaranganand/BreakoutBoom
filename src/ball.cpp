@@ -3,6 +3,14 @@
 #include <raylib.h>
 #include <stdlib.h>
 
+/*
+Problems to patch:
+1. ball gets stuck at left wall sometimes for unidentified reason - moves along y-axis but only vibrates on x-axis, never moving smoothly to the right
+2. after finishing slowdown powerup, ball changes angle slightly when it transitions back to regular speed
+3. ball vibrates on paddle sometimes (if it collides as paddle is moving)
+4. double tiles not registering
+*/
+
 Ball::Ball()
 {
     x = 540.0f; // centre
