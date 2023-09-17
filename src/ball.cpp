@@ -9,7 +9,11 @@ Problems to patch:
 2. after finishing slowdown powerup, ball changes angle slightly when it transitions back to regular speed
 3. ball vibrates on paddle sometimes (if it collides as paddle is moving)
 4. double tiles not registering
+5. no sound effects playing
 */
+
+// Sound powerupSound = LoadSound("src/audio/powerup.mp3");
+// Sound boomSound = LoadSound("src/audio/boom.mp3");
 
 Ball::Ball()
 {
@@ -79,7 +83,7 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
         y += speedY;
 
         // Check collision with paddle
-        if (CheckCollisionCircleRec({x, y}, radius, {(float)paddle.x,(float)paddle.y,(float)paddle.width,(float)paddle.height }))
+        if (CheckCollisionCircleRec({x, y}, radius, {(float)paddle.x,(float)paddle.y,(float)paddle.width,(float)paddle.height}))
         {
             speedY = -speedY; // Reverse the ball's vertical direction
             speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction
@@ -104,6 +108,8 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
                         {
                             // play sparkle sound effect and draw shiny stars aroud ball 
 
+                            // PlaySound(powerupSound);
+
                             int powerUpType = GetRandomValue(1, 2);
                             if (powerUpType == 1) // Size increase
                             {
@@ -125,6 +131,7 @@ void Ball::Update(Paddle& paddle, Tiles& tiles, int& score)
                         if (tile.type == BOMB)
                         {
                             // play boom sound effect and draw explosion
+                            // PlaySound(boomSound);
                         }
                     }
                     speedX += GetRandomValue(-3, 3); // Add some randomness to the ball's horizontal direction

@@ -1,6 +1,8 @@
 // paddle.cpp
 #include "paddle.h"
 #include <raylib.h>
+#include <raymath.h>
+#include <rlgl.h>
 
 Paddle::Paddle() // spawn the paddle to the bottom center of the screen
 {
@@ -36,6 +38,7 @@ void Paddle::Move()
     {
         x += speedX;
     }
+
     /*
     ----------------------------------
     WORK IN PROGRESS: Trying to implement a boost to the paddle's horizontal speed when the left or right arrow key is pressed twice within 0.2 seconds
@@ -64,6 +67,18 @@ void Paddle::Move()
     else 
     {
         rightArrowPressTime += GetFrameTime();
+    }
+
+    ----------------------------------
+    WORK IN PROGRESS: Trying to rotate paddle
+    ----------------------------------
+    if(IsKeyDown(KEY_UP))
+    {
+        rlRotatef(-30.0f, float(x), float(y), 0.0f);
+    }
+    if(IsKeyDown(KEY_DOWN))
+    {
+        rlRotatef(30.0f, float(x), float(y), 0.0f);
     }
     */
 }

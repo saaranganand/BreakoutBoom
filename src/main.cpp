@@ -176,6 +176,9 @@ int main()
 
     while (!WindowShouldClose())
     {
+        // InitAudioDevice();
+        // SetMasterVolume(1.0f);
+
         // if(IsKeyPressed(KEY_F11))
         //     ToggleFullscreenWindow(screenWidth, screenHeight);
         BeginDrawing();
@@ -183,6 +186,9 @@ int main()
 
         MainMenu();
 
+        // UnloadSound(powerupSound);
+        // UnloadSound(boomSound);
+        // CloseAudioDevice();
         EndDrawing();
     }
 
