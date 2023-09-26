@@ -1,2 +1,2 @@
 # Breakout: Boom
-variant of breakout
+variant of breakout (which is currently incomplete :p)
