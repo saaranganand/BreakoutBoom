@@ -53,7 +53,7 @@ void SettingsMenu()
     while(!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(BLACK);
+        ClearBackground(DARKGREEN);
 
         DrawText("Settings Menu", GetScreenWidth() / 2 - MeasureText("Settings Menu", 40) / 2, GetScreenHeight() / 4 - 40, 40, WHITE);
         
@@ -282,7 +282,7 @@ int main()
         // SetMasterVolume(1.0f);
 
         BeginDrawing();
-        ClearBackground(black);
+        ClearBackground(DARKGREEN);
 
         MainMenu();
 
