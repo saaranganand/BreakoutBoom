@@ -4,23 +4,6 @@
 #include "paddle.cpp"
 #include "tiles.cpp"
 
-/* WIP - DYNAMIC FULLSCREEN SCALING
-void ToggleFullscreenWindow(int windowWidth, int windowHeight)
-{
-    if(!IsWindowFullscreen())
-    {
-        int monitor = GetCurrentMonitor();
-        SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
-        ToggleFullscreen();
-    }
-    else
-    {
-        ToggleFullscreen();
-        SetWindowSize(windowWidth, windowHeight);
-    }
-}
-*/
-
 float soundVolume = 0.5f;
 float musicVolume = 0.5f;
 int difficulty = 3; // Start at medium difficulty
@@ -298,8 +281,6 @@ int main()
         // InitAudioDevice();
         // SetMasterVolume(1.0f);
 
-        // if(IsKeyPressed(KEY_F11))
-        //     ToggleFullscreenWindow(screenWidth, screenHeight);
         BeginDrawing();
         ClearBackground(black);
 
