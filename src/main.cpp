@@ -268,8 +268,6 @@ void MainMenu()
 
 int main()
 {
-    Color black = Color{0, 0, 0, 0};
-
     const int screenWidth = 1080;
     const int screenHeight = 800;
 
