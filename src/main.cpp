@@ -230,9 +230,19 @@ void MainMenu()
     
     // Draw other buttons or links as needed
 
+    // Credits:
+    DrawText("Created by: ", GetScreenWidth() / 2 - MeasureText("Created by: ", 20) / 2, GetScreenHeight() / 2 + 200, 20, WHITE);
+    DrawText("Saarang A. ", GetScreenWidth() / 2 - MeasureText("Saarang A. ", 20) / 2, GetScreenHeight() / 2 + 220, 20, WHITE);
+
+    // Social links using icons from folder:
+    // Github:
+    DrawRectangle(GetScreenWidth() / 2 - 20, GetScreenHeight() / 2 + 250, 40, 40, BLUE);
+    DrawTexture(LoadTexture("src/icons/github-mark.png"), GetScreenWidth() / 2 - 20, GetScreenHeight() / 2 + 250, WHITE);
+    Rectangle github_button = { float(GetScreenWidth() / 2 - 20), float(GetScreenHeight() / 2 + 250), 40, 40 };
+
     Vector2 mousePos = GetMousePosition();
 
-    if (CheckCollisionPointRec(mousePos, play_button) || CheckCollisionPointRec(mousePos, settings_button) || CheckCollisionPointRec(mousePos, lead_button))
+    if (CheckCollisionPointRec(mousePos, play_button) || CheckCollisionPointRec(mousePos, settings_button) || CheckCollisionPointRec(mousePos, lead_button) || CheckCollisionPointRec(mousePos, github_button))
         SetMouseCursor(MOUSE_CURSOR_POINTING_HAND);
     else
         SetMouseCursor(MOUSE_CURSOR_DEFAULT);
@@ -260,6 +270,13 @@ void MainMenu()
         else if (CheckCollisionPointRec(mousePos, lead_button))
         {
             // Open the local leaderboard
+        }
+
+        // Check if the github button was clicked
+        else if (CheckCollisionPointRec(mousePos, github_button))
+        {
+            // Open the github page
+            OpenURL("https://github.com/saaranganand");
         }
 
         // Check other buttons or links as needed
