@@ -9,6 +9,6 @@ Features:
 - Green 'Powerup' tiles: Gives you one of two advantages if hit - either slows the ball down or enlarges it.
 
 How to install:\
-Macos and Linux versions are available under "Pre-Alpha" tag.
+Windows, Macos and Linux versions are available under "Pre-Alpha" tag.
 
 Please note: this game is still unfinished 💀
