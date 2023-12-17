@@ -1,14 +1,15 @@
 # Breakout: Boom
-Variant of Atari's 70s hit 'Breakout'.
+Variant of Atari's 70s hit 'Breakout'.\
+Built using C++ and [Raylib](https://github.com/raysan5/raylib).
 
-How it works:\
+<ins>How it works:</ins>\
 Use your paddle to bounce the ball into the tiles and try to clear out the whole level.
 
-Features:
+<ins>Features:</ins>
 - Red 'Boom' tiles: Decreases your score if hit.
 - Green 'Powerup' tiles: Gives you one of two advantages if hit - either slows the ball down or enlarges it.
 
-How to install:\
+<ins>How to install:</ins>\
 Windows, Macos and Linux versions are available under "Pre-Alpha" tag.
 
-Please note: this game is still unfinished 💀
+<i>Please note:</i> this game is still unfinished 💀
